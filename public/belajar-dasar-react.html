@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar reacjs</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // cara biasa
+      //   const root = document.querySelector("#root");
+      //   const element = document.createElement("h1");
+      //   element.textContent = "Hello from js!";
+      //   element.className = "heading-1";
+
+      //   root.appendChild(element);
+
+      //   cara reactjs versi 18, agak berbeda
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   const element = React.createElement(
+      //     "h1",
+      //     {
+      //       className: "heading-1",
+      //     },
+      //     "Hello from React js"
+      //   );
+
+      //   root.render(element);
+
+      //   cara react fragment agar tidak perlu pembungkus seperti div
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   const p1 = React.createElement("p", null, "paragraf 1");
+      //   const p2 = React.createElement("p", null, "paragraf 2");
+      //   const element = React.createElement(React.Fragment, null, [p1, p2]);
+
+      //   root.render(element);
+
+      //   menggunakan jsx
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   function ngegas(text) {
+      //     return text.toUpperCase();
+      //   }
+      //   const nama = "Ridho";
+      //   const element = <h1>Hello {ngegas(nama)}</h1>;
+      //   root.render(element);
+
+      //   jsx element untun menambahkan classname atau biasa di sebut props
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   //   const element = <h1 className="heading-1">Hello </h1>;
+
+      //   const className = "heading-1";
+      //   const element = <h1 className={className}>Hello </h1>;
+      //   root.render(element);
+
+      //   //   jsx empty elemnt seperti input dan image harus di berikan closing tag
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   const element = (
+      //     <img src="https://images.unsplash.com/photo-1668108644868-a7865d4258c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+      //   );
+      //   root.render(element);
+
+      //   jsx fucntion di react element
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   //  function yang mereturn element di sebut component dan nama component di awali huruf besar
+      //   const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      //   //   react componet merupakan function yg return element react
+      //   function Halo(props) {
+      //     return (
+      //       <p>
+      //         Halo <b>{props.nama}</b>
+      //       </p>
+      //     );
+      //   }
+
+      //   //   const element = (
+      //   //     <>
+      //   //       {Halo("Ridho")}
+      //   //       {Halo("fahmi")}
+      //   //       {Halo("dodu")}
+      //   //     </>
+      //   //   );
+
+      //   //   cara yg tepat memanggi component
+      //   const element = (
+      //     <>
+      //       <Halo nama="Ridho" />
+      //       <Halo nama="fdf" />
+      //       <Halo nama="fsfd" />
+      //     </>
+      //   );
+      //   root.render(element);
+
+      //  render hanya bagian yg berubah
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      function tick() {
+        // jika menggunakan react hanya bagian yg berubah yg di update
+        const element = (
+          <div>
+            <h1>Jam Sekarang</h1>
+            {new Date().toLocaleTimeString()}
+          </div>
+        );
+        root.render(element);
+
+        // sedangkan jika menggunakan html maka seluruh div ny akan berubah
+        // const element = `
+        // <div>
+        //   <h1>Jam Sekarang</h1>
+        //   ${new Date().toLocaleTimeString()}
+        // </div>;
+        // `;
+        // root.innerHTML = element;
+      }
+
+      setInterval(() => {
+        tick();
+      }, 1000);
+    </script>
+  </body>
+</html>
